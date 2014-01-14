@@ -12,6 +12,7 @@ Hoe.plugin :mercurial
 Hoe.plugin :signing
 Hoe.plugin :deveiate
 Hoe.plugin :bundler
+Hoe.plugin :gemspec
 
 Hoe.plugins.delete :rubyforge
 
@@ -22,13 +23,14 @@ hoespec = Hoe.spec 'loggability' do
 
 	self.developer 'Michael Granger', 'ged@FaerieMUD.org'
 
+	self.dependency 'hoe-gemspec',    '~> 1.0.0', :developer
 	self.dependency 'hoe-deveiate',    '~> 0.3', :developer
 	self.dependency 'hoe-bundler',     '~> 1.2', :developer
 	self.dependency 'simplecov',       '~> 0.7', :developer
 	self.dependency 'configurability', '~> 2.0', :developer
 
 	self.license "Ruby"
-	self.require_ruby_version( '>=1.9.3' )
+	self.require_ruby_version( '>=1.9.2' )
 	self.hg_sign_tags = true if self.respond_to?( :hg_sign_tags= )
 	self.check_history_on_release = true if self.respond_to?( :check_history_on_release= )
 
